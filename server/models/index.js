@@ -1,4 +1,3 @@
-const { query } = require('express');
 const db = require('../database');
 
 module.exports = {
