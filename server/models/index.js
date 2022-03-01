@@ -2,11 +2,36 @@ const db = require('../database');
 
 module.exports = {
   items: {
-    post: (name, description, price, discount, inventory, image, callback) => {
+    post: (
+      id,
+      name,
+      description,
+      price,
+      discount,
+      inventory,
+      image,
+      callback
+    ) => {
       // 상품 등록
-      if (name && description && price && discount && inventory && image) {
-        const queryString = `INSERT INTO items (name, description, price, discount, inventory, image) VALUES (?, ?, ?, ?, ?, ?)`;
-        const params = [name, description, price, discount, inventory, image];
+      if (
+        id &&
+        name &&
+        description &&
+        price &&
+        discount &&
+        inventory &&
+        image
+      ) {
+        const queryString = `INSERT INTO items (id, name, description, price, discount, inventory, image) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+        const params = [
+          id,
+          name,
+          description,
+          price,
+          discount,
+          inventory,
+          image,
+        ];
 
         return db.query(queryString, params, (err, result) => {
           callback(err, result);

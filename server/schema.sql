@@ -1,6 +1,6 @@
 
 CREATE TABLE items (
-    id INT AUTO_INCREMENT,
+    id INT ,
     name varchar(255),
     description varchar(255),
     price INT,
