@@ -1,6 +1,9 @@
-const router = require('express').Router()
-const controller = require('./../controllers')
+const router = require('express').Router();
+const controller = require('./../controllers');
 
-router.get('/', controller.items.get)
+router.post('', controller.items.post);
+router.get('/', controller.items.get);
+router.patch('', controller.items.patch);
+router.delete('', controller.items.delete);
 
-module.exports = router
+module.exports = router;
