@@ -2,9 +2,9 @@ const models = require('../models');
 
 module.exports = {
   items: {
-    post: () => {},
-    get: () => {},
-    patch: () => {},
-    delete: () => {},
+    post: (req, res) => {},
+    get: (req, res) => {},
+    patch: (req, res) => {},
+    delete: (req, res) => {},
   },
 };
