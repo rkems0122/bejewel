@@ -17,6 +17,7 @@
 * [바로가기](https://jeongwon-seo.gitbook.io/bejewel/)
 
 ## 사용법
-* mysql에서 'CREATE DATABASE bejewel'을 입력하여 데이터베이스 등록이 필요합니다.
-* 데이터베이스가 등록되었다면 server폴더에서 npm run schema를 입력하여 스키마 등록을 해줍니다.
-* npm run start를 실행하여 Nodemon을 실행하여 서버를 키셔서 테스트하시면 됩니다.
+* 처음 실행할 시, mysql에서 'CREATE DATABASE bejewel'을 입력해야됩니다.(즉, 데이터베이스를 생성해야 함)
+* 데이터베이스가 생성되었다면 server폴더에서 npm run schema를 입력하여 스키마 등록을 해줍니다.
+* npm run schema를 실행하면 mysql의 배치모드가 실행됩니다. 
+* 스키마가 생성되었으면, npm run start를 실행하여 Nodemon을 실행하여 서버를 키셔서 테스트하시면 됩니다.
