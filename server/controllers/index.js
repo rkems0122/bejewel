@@ -32,7 +32,11 @@ module.exports = {
         if (err) {
           res.status(500).send('Internal Server Error');
         } else {
-          res.status(200).json(result);
+          if (result.length === 0) {
+            res.status(404).send('No Item Exists!');
+          } else {
+            res.status(200).json(result);
+          }
         }
       });
     },
@@ -41,29 +45,33 @@ module.exports = {
         if (err) {
           res.status(500).send('Internal Server Error');
         } else {
-          res.status(200).json(result);
+          if (result.length === 0) {
+            res.status(404).send('No Item Exists!');
+          } else {
+            res.status(200).json(result);
+          }
         }
       });
     },
     patch: (req, res) => {
-      const { id, name, description, price, inventory, image } = req.body;
-      if (id) {
-        models.items.patch(id, (err, result) => {
-          if (err) {
-            res.status(500).send('Internal Server Error');
-          } else {
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
+      const id = req.params.id;
+      const { name, description, price, inventory, image } = req.body;
       if (name) {
-        models.items.patch(name, (err, result) => {
-          if (err) {
-            res.status(500).send('Internal Server Error');
-          } else {
-            res.status(201).send('Succesfully Modified!');
+        models.items.patch(
+          id,
+          name,
+          description,
+          price,
+          inventory,
+          image,
+          (err, result) => {
+            if (err) {
+              res.status(500).send('Internal Server Error');
+            } else {
+              res.status(201).send('Succesfully Modified!');
+            }
           }
-        });
+        );
       }
       if (description) {
         models.items.patch(description, (err, result) => {
@@ -104,6 +112,7 @@ module.exports = {
     },
     delete: (req, res) => {
       const id = req.params.id;
+
       models.items.delete(id, (err, result) => {
         if (err) {
           res.status(500).send('Internal Server Error');

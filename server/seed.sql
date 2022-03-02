@@ -1,1 +1,1 @@
-INSERT INTO items (name, description, price, discount, inventory, image) VALUES ('몽쉘', '[아몬즈단독] 24K 반지', 457700, 15, 10, 'https://user-images.githubusercontent.com/85774603/156083366-0e7673ee-fc5d-4146-a283-b7e1478822f4.jpeg')
+INSERT INTO items (id, name, description, price, inventory, image) VALUES (9737, '몽쉘', '[아몬즈단독] 24K 반지', 457700, 10, 'https://user-images.githubusercontent.com/85774603/156083366-0e7673ee-fc5d-4146-a283-b7e1478822f4.jpeg')
