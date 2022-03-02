@@ -5,7 +5,7 @@ module.exports = {
     post: (req, res) => {
       const { id, name, description, price, inventory, image } = req.body;
 
-      if (!id || !name || !description || !price || !inventory || !image) {
+      if (!id && !name && !description && !price && !inventory && !image) {
         return res.status(400).send('Bad Request!');
       } else {
         models.items.post(
@@ -56,7 +56,9 @@ module.exports = {
     patch: (req, res) => {
       const id = req.params.id;
       const { name, description, price, inventory, image } = req.body;
-
+      if (!name || !description || !price || !inventory || !image) {
+        return res.status(400).send('Bad Request!');
+      }
       if (name) {
         models.items.patch_name(id, name, (err, result) => {
           if (err) {
