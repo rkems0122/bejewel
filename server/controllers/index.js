@@ -56,7 +56,7 @@ module.exports = {
     patch: (req, res) => {
       const id = req.params.id;
       const { name, description, price, inventory, image } = req.body;
-      console.log(id, name);
+
       if (name) {
         models.items.patch_name(id, name, (err, result) => {
           if (err) {
