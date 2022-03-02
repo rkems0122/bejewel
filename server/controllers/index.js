@@ -56,25 +56,18 @@ module.exports = {
     patch: (req, res) => {
       const id = req.params.id;
       const { name, description, price, inventory, image } = req.body;
+      console.log(id, name);
       if (name) {
-        models.items.patch(
-          id,
-          name,
-          description,
-          price,
-          inventory,
-          image,
-          (err, result) => {
-            if (err) {
-              res.status(500).send('Internal Server Error');
-            } else {
-              res.status(201).send('Succesfully Modified!');
-            }
+        models.items.patch_name(id, name, (err, result) => {
+          if (err) {
+            res.status(500).send('Internal Server Error');
+          } else {
+            res.status(201).send('Succesfully Modified!');
           }
-        );
+        });
       }
       if (description) {
-        models.items.patch(description, (err, result) => {
+        models.items.patch_description(id, description, (err, result) => {
           if (err) {
             res.status(500).send('Internal Server Error');
           } else {
@@ -83,7 +76,7 @@ module.exports = {
         });
       }
       if (price) {
-        models.items.patch(price, (err, result) => {
+        models.items.patch_price(id, price, (err, result) => {
           if (err) {
             res.status(500).send('Internal Server Error');
           } else {

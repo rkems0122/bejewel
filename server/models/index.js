@@ -16,8 +16,9 @@ module.exports = {
       }
     },
     get: (id, callback) => {
-      const queryString = `SELECT * FROM items WHERE id = ${id}`;
-      db.query(queryString, (err, result) => {
+      const queryString = `SELECT * FROM items WHERE id = ?`;
+      const params = [id];
+      db.query(queryString, params, (err, result) => {
         callback(err, result);
       });
     },
@@ -27,41 +28,42 @@ module.exports = {
         callback(err, result);
       });
     },
-    patch: (id, name, description, price, inventory, image, callback) => {
-      // 상품 수정
-      if (name) {
-        const queryString = `UPDATE items SET name = ${name} WHERE id = ${id}`;
-        db.query(queryString, (err, result) => {
-          callback(err, result);
-        });
-      }
-      if (description) {
-        const queryString = `UPDATE items SET description = ${description} WHERE id = ${id}`;
-        db.query(queryString, (err, result) => {
-          callback(err, result);
-        });
-      }
-      if (price) {
-        const queryString = `UPDATE items SET price = ${price} WHERE id = ${id}`;
-        db.query(queryString, (err, result) => {
-          callback(err, result);
-        });
-      }
-      if (inventory) {
-        const queryString = `UPDATE items SET inventory = ${inventory} WHERE id = ${id}`;
-        db.query(queryString, (err, result) => {
-          callback(err, result);
-        });
-      }
-      if (image) {
-        const queryString = `UPDATE items SET image = ${image} WHERE id = ${id}`;
-        db.query(queryString, (err, result) => {
-          callback(err, result);
-        });
-      }
+    patch_name: (id, name, callback) => {
+      const queryString = `UPDATE items SET name = ? WHERE id = ?`;
+      const params = [name, id];
+      db.query(queryString, params, (err, result) => {
+        callback(err, result);
+      });
+    },
+    patch_description: (id, description, callback) => {
+      const queryString = `UPDATE items SET description = ? WHERE id = ?`;
+      const params = [description, id];
+      db.query(queryString, params, (err, result) => {
+        callback(err, result);
+      });
+    },
+    patch_price: (id, price, callback) => {
+      const queryString = `UPDATE items SET price = ? WHERE id = ?`;
+      const params = [price, id];
+      db.query(queryString, params, (err, result) => {
+        callback(err, result);
+      });
+    },
+    patch_inventory: (id, inventory, callback) => {
+      const queryString = `UPDATE items SET inventory = ? WHERE id = ?`;
+      const params = [inventory, id];
+      db.query(queryString, params, (err, result) => {
+        callback(err, result);
+      });
+    },
+    patch_image: (id, image, callback) => {
+      const queryString = `UPDATE items SET image = ? WHERE id = ?`;
+      const params = [image, id];
+      db.query(queryString, params, (err, result) => {
+        callback(err, result);
+      });
     },
     delete: (id, callback) => {
-      // 상품 삭제
       const queryString = `DELETE FROM items WHERE id = ${id}`;
       db.query(queryString, (err, result) => {
         callback(err, result);
