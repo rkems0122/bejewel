@@ -1,1 +1,2 @@
-INSERT INTO items (id, name, description, price, inventory, image) VALUES (9737, '몽쉘', '[아몬즈단독] 24K 반지', 457700, 10, 'https://user-images.githubusercontent.com/85774603/156083366-0e7673ee-fc5d-4146-a283-b7e1478822f4.jpeg')
+INSERT INTO items (id, name, description, price, inventory, image, category, material_base, material_etc, material_plated, material_stone, shape, size, weight) 
+VALUES (9737, '뽀르띠', '뽀르띠 순금 탄생석 돌반지 3.75g', 413700, 10, '-', 'ACC, 24K PURE GOLD, 반지, 돌반지', '24K골드', '-', '-', '-', '-', 'free', '-')
