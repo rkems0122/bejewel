@@ -14,7 +14,7 @@
 ## API
 * API는 본 과제에서 요청한 대로 상품 등록, 상품 불러오기, 상품 편집, 상품 삭제 API를 구현하였습니다.
 * 자세한 내용은 gitbook 참고 부탁드립니다.
-* [바로가기](https://jeongwon-seo.gitbook.io/bejewel/reference/api-reference/items)
+* [바로가기](https://jeongwon-seo.gitbook.io/bejewel/)
 
 ## 사용법
 * 처음 실행할 시, mysql에서 'CREATE DATABASE bejewel'을 입력해야됩니다.(즉, 데이터베이스를 생성해야 함)
