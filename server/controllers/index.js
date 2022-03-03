@@ -115,70 +115,33 @@ module.exports = {
         }
       });
     },
-    patch: (req, res) => {
+    put: (req, res) => {
       const id = req.params.id;
       const { name, description, price, inventory, image } = req.body;
-      if (!name || !description || !price || !inventory || !image) {
+      console.log('id값', id, '입력값', req.body);
+      if (!name && !description && !price && !inventory && !image) {
         console.log('No Input!');
         return res.status(400).send('Bad Request!');
       }
-      if (name) {
-        models.items.patch_name(id, name, (err, result) => {
+      models.items.put(
+        id,
+        name,
+        description,
+        price,
+        inventory,
+        image,
+        (err, result) => {
           if (err) {
             console.log(err);
             res.status(500).send('Internal Server Error');
           } else {
-            console.log('Name is Modified!');
+            console.log('Category is Modified!');
             res.status(201).send('Succesfully Modified!');
           }
-        });
-      }
-      if (description) {
-        models.items.patch_description(id, description, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Description is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (price) {
-        models.items.patch_price(id, price, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Price is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (inventory) {
-        models.items.patch(inventory, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Inventory is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (image) {
-        models.items.patch(image, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Image is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
+        }
+      );
     },
-    patch_detailed: (req, res) => {
+    put_detailed: (req, res) => {
       const id = req.params.id;
       const {
         category,
@@ -204,98 +167,26 @@ module.exports = {
         console.log('No Input!');
         return res.status(400).send('Bad Request!');
       }
-      if (category) {
-        models.items.patch_category(id, category, (err, result) => {
+      models.items.put_detailed(
+        id,
+        category,
+        material_base,
+        material_etc,
+        material_plated,
+        material_stone,
+        shape,
+        size,
+        weight,
+        (err, result) => {
           if (err) {
             console.log(err);
             res.status(500).send('Internal Server Error');
           } else {
-            console.log('Category is Modified!');
+            console.log('Details are Modified!');
             res.status(201).send('Succesfully Modified!');
           }
-        });
-      }
-      if (material_base) {
-        models.items.patch_material_base(id, material_base, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Material_base is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (material_etc) {
-        models.items.patch_material_etc(id, material_etc, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Material_etc is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (material_plated) {
-        models.items.patch_material_plated(
-          id,
-          material_plated,
-          (err, result) => {
-            if (err) {
-              console.log(err);
-              res.status(500).send('Internal Server Error');
-            } else {
-              console.log('Material_plated is Modified!');
-              res.status(201).send('Succesfully Modified!');
-            }
-          }
-        );
-      }
-      if (material_stone) {
-        models.items.patch_material_stone(id, material_stone, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Material_stone is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (shape) {
-        models.items.shape(id, shape, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Shape is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (size) {
-        models.items.patch_size(id, size, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Size is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
-      if (weight) {
-        models.items.patch_weight(id, weight, (err, result) => {
-          if (err) {
-            console.log(err);
-            res.status(500).send('Internal Server Error');
-          } else {
-            console.log('Weight is Modified!');
-            res.status(201).send('Succesfully Modified!');
-          }
-        });
-      }
+        }
+      );
     },
     delete: (req, res) => {
       const id = req.params.id;
